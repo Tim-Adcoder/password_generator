@@ -36,3 +36,25 @@ function writePassword() {
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
+function getPrompt() {
+  characterLength = prompt("Between 8-128, How many characters do you want for the password?")
+
+  if(isNaN(characterLength) || characterLength < 8 || charLength > 128) {
+    alert("Please choose character length between 8 - 128. Let's try again. " );
+    return false; 
+  } 
+
+  if(confirm("Lowercase letters in the password?")) {
+    choiceAry = choiceAry.concat(lowercaseAry);
+  }
+  if(confirm("Uppercase letters in the password?")) {
+    choiceAry = choiceAry.concat(uppercaseAry);
+  }
+  if(confirm("spcial characters in the password?")) {
+    choiceAry = choiceAry.concat(specialCharAry);
+  }
+  if(confirm("How about numbers?")) {
+    choiceAry = choiceAry.concat(numberAry);
+  }
+  return true;
+} 
