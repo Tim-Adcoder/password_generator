@@ -1,7 +1,7 @@
 // Assignment Code 
 var generateBtn = document.querySelector("#generate");
 var charLength = 8;
-var choiceAry = [];
+var chosenAry = [];
 
 var specialCharAry = ['`','~','!','@','#','$','%','^','&','*','(',')','-','_','+','=','|','?','/','<','>',';',':'];
 var lowercaseAry = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
@@ -19,6 +19,7 @@ function generatePassword() {
 // 3. uppercase
 // 4. numeric
 // 5. special characters
+
 // validate input 
 // display password based on ceriteria
   return "Generated password will be shown here.";
@@ -26,10 +27,22 @@ function generatePassword() {
 
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
+  var prompts = getPrompt()
 
-  passwordText.value = password;
+  if (Prompts) {
+    var password = generatePassword();
+    var passwordText = document.querySelector("#password");
+    passwordText.value = password;
+  }
+
+}
+
+function generatePassword() {
+  var finalPassword = "";
+for(var i = 0; i < charLength; i++) {
+  var randomoIndex = Math.floor(random() * chosenAry.length);
+  password = password + choiceAry[randomIndex];
+}
 
 }
 
@@ -37,6 +50,8 @@ function writePassword() {
 generateBtn.addEventListener("click", writePassword);
 
 function getPrompt() {
+  choiceAry = [] 
+
   characterLength = prompt("Between 8-128, How many characters do you want for the password?")
 
   if(isNaN(characterLength) || characterLength < 8 || charLength > 128) {
@@ -45,16 +60,16 @@ function getPrompt() {
   } 
 
   if(confirm("Lowercase letters in the password?")) {
-    choiceAry = choiceAry.concat(lowercaseAry);
+    chosenAry = choiceAry.concat(lowercaseAry);
   }
   if(confirm("Uppercase letters in the password?")) {
-    choiceAry = choiceAry.concat(uppercaseAry);
+    chosenAry = choiceAry.concat(uppercaseAry);
   }
   if(confirm("spcial characters in the password?")) {
-    choiceAry = choiceAry.concat(specialCharAry);
+    chosenAry = choiceAry.concat(specialCharAry);
   }
   if(confirm("How about numbers?")) {
-    choiceAry = choiceAry.concat(numberAry);
+    chosenAry = choiceAry.concat(numberAry);
   }
   return true;
-} 
+}  
