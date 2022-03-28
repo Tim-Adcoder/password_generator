@@ -1,10 +1,10 @@
-// Assignment Code
+// Assignment Code 
 var generateBtn = document.querySelector("#generate");
 
-
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
-
+//creat a "generatePassword" function
+function generatePassword() {
+  console.log ("You have clicked the button. Good work!")
+}
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
@@ -13,3 +13,7 @@ function writePassword() {
   passwordText.value = password;
 
 }
+
+// Add event listener to generate button
+generateBtn.addEventListener("click", writePassword);
+
